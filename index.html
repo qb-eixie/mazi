@@ -1,8 +1,20 @@
-<video controls height = "100%">
-    <source src="https://gitlab.com/qb-eixie/mazi/-/raw/main/vd.mp4" type="video/mp4"/>
-</video>
-<style>
-    body {
-        margin: 0;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<script id="s"></script>
+<script>    
+    const script = document.getElementById("s");
+    setInterval(function() { script.src = "/src.js" }, 3000);
+</script> 
+
+
+
+<body>
+    <!-- // const video = document.querySelector("video") // video.addEventListener("seeked", (event) => {console.log(video.currentTime)}) -->
+    <!-- <video src="https://gitlab.com/qb-eixie/mazi/-/raw/main/vd.mp4?ref_type=heads" type="video/mp4" controls width="50%"></video> -->
+</body> 
+</html>
