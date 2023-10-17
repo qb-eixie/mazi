@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/watcher', (req, res) => {
-    res.sendDate({a:9});
+    res.send({a:9});
 })
 
 // app.post('/watcher', (req, res) => {
