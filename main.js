@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html")
 })
 
-app.post('/', (req, res) => {
+app.post('/data', (req, res) => {
     var body = stringify(req.body); fs.writeFile(__dirname + '/data.txt', body, { flag: 'a+' }, err => {console.log(err)});
 })
 
