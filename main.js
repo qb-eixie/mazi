@@ -1,19 +1,20 @@
 const express = require("express");
-const app = express()
+var bodyParser = require('body-parser')
+const fs = require("fs");
+const { stringify } = require("querystring");
+const app = express();
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html")
 })
 
-app.get('/json', (req, res) => {
-    res.sendFile(__dirname + "/data.json");
+app.post('/', (req, res) => {
+    var body = stringify(req.body); fs.writeFile(__dirname + '/data.txt', body, { flag: 'a+' }, err => {console.log(err)});
 })
 
-// app.post('/watcher', (req, res) => {
-    
-// })
-
 app.listen(3000, () => {
-    console.log("[LISTENING]")
+    console.log("...")
 })
 
