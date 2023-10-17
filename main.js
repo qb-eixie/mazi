@@ -5,8 +5,8 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html")
 })
 
-app.get('/watcher', (req, res) => {
-    res.send({a:9});
+app.get('/json', (req, res) => {
+    res.sendFile(__dirname + "/data.json");
 })
 
 // app.post('/watcher', (req, res) => {
