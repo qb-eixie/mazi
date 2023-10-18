@@ -9,10 +9,15 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/index.html")
 })
-
+var a = [];
 app.post('/data', (req, res) => {
-    console.log(req.body);
+    a.pop()
+    a.push(req.body)
 })
+
+function aa() {console.log(a[0])}
+
+setInterval(aa, 1000)
 
 app.listen(3000, () => {
     console.log("...")
