@@ -1,21 +1,12 @@
-
+<!DOCTYPE html>
+<head></head>
+<body>    
+    <video id="vid" src="vd.mp4" controls width="70%" type="video/mp4"> </video>
+</body>
 <script defer>
-    function getter(){
-        fetch("/data")
-        .then(res  => res.json())
-        .then(data => {console.log(data)})
-        .then(err  => console.error(err))
-    }
-    
-    function poster(){
-        fetch("/data", {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                p:  false,
-                pp: false,
-                st: false,
-                s:  true
-            })
-            })
-        }
+function poster(a, b, c){fetch("/data", {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify({p:  a, st: c, s:  c})})}
+    const vid = document.getElementById("vid")
+    vid.addEventListener("onplay", (event) => {}); vid.onplay = function(){poster(true, false, false)}
+    vid.addEventListener("onpause", (event) => {}); vid.onpause = function(){poster(false, false, false)}
+</script>
+</html>

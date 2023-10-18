@@ -1,0 +1,26 @@
+    const vid = document.createElement("video")
+    vid.src = "https://lh3.googleusercontent.com/LNmV8caf3WWNIBWvbQQwYD6C4PFUiaNw9IhH6Vks5H8cz3T69_ukGrzOxMWw6aqbT03wzibtuHbaVJV4mpW_6mva1j81bN0cwPOCQYM9atqOJKjnKNbAIXZG-h746reB05NBJHZWbA=dv"
+    vid.controls = true
+    vid.width ="70%";
+    document.body.append(vid)
+
+    function getter(){
+            fetch("/data")
+        .then(res  => res.json())
+        .then(data => {console.log(data)})
+        .then(err  => console.error(err))
+    }
+    
+    function poster(){
+        fetch("/data", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                    p:  false,
+                pp: false,
+                st: false,
+                s:  true
+            })
+            })
+        }
+    
