@@ -5,18 +5,20 @@
 </body>
 <script defer>
     var x = [{p: false, st: true, s: 0 }]
-    function poster(){fetch("/data", {method: "POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(x[0])})}
+    function poster(){fetch("/data", {method: "PATCH", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(x[0])})}
     const vid = document.getElementById("vid")
-    vid.addEventListener("oncanplay", (event) => {}); vid.oncanplay = function(){
-        vid.addEventListener("onplay", (event) => {}); vid.onplay   = function(){x[0].p = true; poster(); console.log("E:paused=>play " + x[0].p)}
-        vid.addEventListener("onpause", (event) => {}); vid.onpause = function(){x[0].p = false; poster();  console.log("E:play=>puase " + x[0].p)}
+    vid.addEventListener("oncanplay", (event) => {}); vid.oncanplay = function(){ 
+        vid.addEventListener("onplay", (event) => {}); vid.onplay   = function(){x[0].p = true; poster();  console.log("E:paused=>play " + x[0].p)}
+        vid.addEventListener("onpause", (event) => {}); vid.onpause = function(){x[0].p = false; poster(); console.log("E:play=>puase " + x[0].p)}
         // vid.addEventListener("seeked", (event) => {}); vid.seeked = function(){poster(true, false, vid.currentTime); console.log(vid.currentTime)}
-        function getter(){fetch("/data")
+        function getter(){fetch("/data", {method: "GET"})
             .then(res => res.json())
             .catch(err => {
                 console.error(err);
             })
             .then(async (data) => {
+                let vid_id = vid.id; 
+                sessionStorage.removeItem(vid_id)
                 x[0].p = data.p;
             });
             }
@@ -25,10 +27,10 @@
             let curret_state = !vid.paused;
             let server_value = x[0].p
             console.log("cur:" + curret_state, "server:" + server_value);
-            if     (!curret_state && server_value){vid.play(), console.log("puase=>play")}
-            else if(curret_state && !server_value){vid.pause(), console.log("play=>pause")}
-            else if(curret_state){console.log("playing:state")}
-            else   {console.log("paused:state")}
+            if     (!curret_state && server_value){vid.play(),   console.log("puase=>play"); }
+            else if(curret_state && !server_value){vid.pause(), console.log("play=>pause"); }
+            else if(curret_state){  console.log("S:playing")}
+            else   { console.log("S:paused")}
         }, 700)
         }
 </script>

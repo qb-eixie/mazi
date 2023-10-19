@@ -18,13 +18,12 @@ app.get('/data', (req, res) => {
     res.json(a[0]);
 })
 
-app.post('/data', (req, res) => {
+app.patch('/data', (req, res) => {
         a[0].p = req.body.p
-        sleep(1500);   
 })
 
 app.listen(3000, () => {
     console.log("...")
 })
 
-setInterval( function(){console.log(a[0].p)}, 1000);
+setInterval( function(){console.log(a[0].p)}, 700);
